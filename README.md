@@ -1,4 +1,4 @@
-![Goodcheck logo](logo/GoodCheck%20Horizontal.png)
+![Goodcheck logo](logo/goodcheck-horizontal.png)
 
 # Goodcheck - Regexp based customizable linter
 

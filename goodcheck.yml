@@ -4,7 +4,7 @@ rules:
     glob: "lib/**/*.rb"
     severity: warning
     message: |
-      Use `GoodCheck::Error` instead of `StandardError`.
+      Use `Goodcheck::Error` instead of `StandardError`.
 
 import:
   - https://github.com/sider/goodcheck-rules/archive/refs/tags/v0.0.3.tar.gz
