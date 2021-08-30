@@ -27,7 +27,7 @@ If you do not want to install it, you can run it via Docker instead:
 $ docker run -t --rm -v "$(pwd):/work" sider/goodcheck
 ```
 
-Check out the [documentation](docusaurus/docs/getstarted.md) or [website](https://sider.github.io/goodcheck/) for more details.
+Check out the [documentation](docs/getstarted.md) or [website](https://sider.github.io/goodcheck/) for more details.
 
 ## Development
 
