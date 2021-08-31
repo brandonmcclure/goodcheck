@@ -6,14 +6,14 @@ sidebar_label: Get Started
 
 ## Installation
 
-```console
-$ gem install goodcheck
+```shell
+gem install goodcheck
 ```
 
 Or you can use [`bundler`](https://bundler.io):
 
-```console
-$ bundle add goodcheck
+```shell
+bundle add goodcheck
 ```
 
 If you would not like to install Goodcheck to system (e.g. you would not like to install Ruby), you can use our [Docker images](#docker-images).
@@ -25,8 +25,8 @@ Visit our [Docker Hub](https://hub.docker.com/r/sider/goodcheck/) page for more 
 
 For example:
 
-```console
-$ docker run -t --rm -v "$(pwd):/work" sider/goodcheck check
+```shell
+docker run -t --rm -v "$(pwd):/work" sider/goodcheck check
 ```
 
 The default `latest` tag points to the latest version of Goodcheck.
@@ -34,10 +34,12 @@ You can pick any version of Goodcheck from the [released tags](https://hub.docke
 
 ## Quickstart
 
-```console
-$ goodcheck init
-$ vim goodcheck.yml
-$ goodcheck check
+```shell
+goodcheck init
+
+# Edit goodcheck.yml
+
+goodcheck check
 ```
 
 1. Generate a template of [`goodcheck.yml`](configuration.md) configuration file for you.

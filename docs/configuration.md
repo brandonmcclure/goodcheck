@@ -207,8 +207,8 @@ The hash can have an optional `encoding` attribute.
 You can specify the encoding of the file by the names defined for Ruby.
 The list of all available encoding names can be found by the command:
 
-```console
-$ ruby -e "puts Encoding.name_list"
+```shell
+ruby -e "puts Encoding.name_list"
 ```
 
 The default value is `UTF-8`.
@@ -260,10 +260,9 @@ rules:
     glob: db/schema.rb
 ```
 
-The output will be something like:
+The output of `goodcheck check` will be something like:
 
-```console
-$ goodcheck check
+```
 db/schema.rb:-:# This file is auto-generated from the current state of the database. Instead: Read the operation manual for DB migration: https://example.com/guides/123
 ```
 
