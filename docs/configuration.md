@@ -54,13 +54,13 @@ A _rule_ hash under the `rules` list contains the following attributes:
 The `pattern` can be one of either:
 
 - [string literal](#string-literal)
-- [_literal pattern_](#literal-pattern)
-- [_regexp pattern_](#regexp-pattern)
-- [_token pattern_](#token-pattern)
+- [literal pattern](#literal-pattern)
+- [regexp pattern](#regexp-pattern)
+- [token pattern](#token-pattern)
 
 ### string literal
 
-A string literal represents a _literal pattern_ or _regexp pattern_.
+A **string literal** represents a _literal pattern_ or _regexp pattern_.
 
 ```yaml
 pattern:
@@ -73,9 +73,9 @@ pattern:
 If the string value begins with `/` and ends with `/`, it is a _regexp pattern_.
 You can optionally specify regexp options like `/case-insensitive/i` or `/multiline/m`.
 
-### _literal pattern_
+### literal pattern
 
-A _literal pattern_ allows you to construct a regexp which matches exactly to the `literal` string.
+A **literal pattern** allows you to construct a regexp which matches exactly to the `literal` string.
 
 ```yaml
 id: com.sample.GitHub
@@ -88,9 +88,9 @@ message: Write GitHub, not Github
 All regexp meta characters included in the `literal` value will be escaped.
 `case_sensitive` is an optional attribute and the default is `true`.
 
-### _regexp pattern_
+### regexp pattern
 
-A _regexp pattern_ allows you to write a regexp with meta characters.
+A **regexp pattern** allows you to write a regexp with meta characters.
 
 ```yaml
 id: com.sample.digits
@@ -109,9 +109,9 @@ The default values of `case_sensitive` and `multiline` are `true` and `false` re
 The regexp will be passed to [`Regexp.compile`](https://ruby-doc.org/core/Regexp.html#compile-method) of Ruby.
 The precise definition of regular expressions can be found in the documentation for Ruby.
 
-### _token pattern_
+### token pattern
 
-A _token pattern_ compiles to a _tokenized_ regexp.
+A **token pattern** compiles to a _tokenized_ regexp.
 
 ```yaml
 id: com.sample.no-blink
@@ -135,7 +135,7 @@ It accepts one optional attribute `case_sensitive`.
 The default value of `case_sensitive` is `true`.
 Note that the generated regexp is in multiline mode.
 
-A _token pattern_ can have an optional `where` attribute and _variable bindings_.
+A token pattern can have an optional `where` attribute and _variable bindings_.
 
 ```yaml
 pattern:
