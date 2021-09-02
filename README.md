@@ -35,14 +35,18 @@ After checking out the repository, run `bin/setup` to install dependencies. Then
 
 To install this gem onto your local machine, run `bundle exec rake install`.
 
+### Releasing
+
 To release a new version, follows the steps below:
 
 1. Update [`lib/goodcheck/version.rb`](lib/goodcheck/version.rb).
 2. Update [CHANGELOG.md](CHANGELOG.md).
-3. Run `bundle exec rake docs:update_version`.
-4. Run `git add . && git commit -m 'Version <new_version>'`.
+3. Run `git add . && git commit -m 'Version <new_version>'`.
+4. Run `bundle update`.
 5. Run `bundle exec rake release`, which will create a tag, push the commit and tag, and publish the gem to [RubyGems.org](https://rubygems.org).
-6. Run `GIT_USER=<your_nickname> [USE_SSH=true] bundle exec rake docs:publish`.
+6. Run `npm ci`.
+7. Run `GIT_USER=<GITHUB_USERNAME> [USE_SSH=true] npm run deploy`.
+   - See also the [Docusaurus guide](https://docusaurus.io/docs/deployment#environment-settings).
 
 ## Contributing
 

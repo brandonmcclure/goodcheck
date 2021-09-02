@@ -2,6 +2,7 @@
 id: commands
 title: Commands
 sidebar_label: Commands
+sidebar_position: 3
 ---
 
 ## `goodcheck init [options]`

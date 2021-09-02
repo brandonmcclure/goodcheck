@@ -5,9 +5,16 @@
     "node": ">=16.4.0",
     "npm": ">=7.17.0"
   },
+  "workspaces": [
+    "website"
+  ],
   "scripts": {
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "start": "npm start --workspace=website",
+    "build": "npm run build --workspace=website",
+    "serve": "npm run serve --workspace=website",
+    "deploy": "npm run deploy --workspace=website"
   },
   "devDependencies": {
     "prettier": "^2.3.2"

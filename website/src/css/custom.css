@@ -1,0 +1,27 @@
+:root {
+  --ifm-color-primary: #1581bb;
+  --ifm-color-primary-dark: #1374a8;
+  --ifm-color-primary-darker: #126e9f;
+  --ifm-color-primary-darkest: #0f5a83;
+  --ifm-color-primary-light: #178ece;
+  --ifm-color-primary-lighter: #1894d7;
+  --ifm-color-primary-lightest: #28a4e7;
+}
+
+.navbar--primary {
+  --ifm-navbar-link-color: var(--ifm-color-white);
+  --ifm-navbar-link-hover-color: var(--ifm-font-color-base);
+}
+
+/* Override Prism theme */
+.custom-yaml .language-yaml {
+  --ifm-code-font-size: 110%;
+}
+.custom-yaml .token.key.atrule {
+  color: var(--ifm-color-success-lighter) !important;
+}
+.custom-yaml .token.plain,
+.custom-yaml .token.scalar,
+.custom-yaml .token.tag {
+  color: var(--ifm-color-info-lighter) !important;
+}

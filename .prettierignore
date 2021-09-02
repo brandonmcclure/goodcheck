@@ -1,2 +1,3 @@
-docusaurus/
 vendor/
+website/.docusaurus/
+website/build/

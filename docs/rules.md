@@ -2,6 +2,7 @@
 id: rules
 title: Rules Example
 sidebar_label: Rules
+sidebar_position: 4
 ---
 
 ## Rule: `target="_blank"` Security Issue
@@ -32,7 +33,11 @@ rules:
 
 ## Rule: Sign in
 
-> Warning: This rule needs customization.
+:::caution
+
+This rule needs customization.
+
+:::
 
 Keep wording consistent to provide a clear experience for users. In this example, the use of Log in or Log out would prompt the use of "sign in" / "sign out" instead.
 
@@ -64,7 +69,11 @@ rules:
 
 ## Rule: Sass mixin
 
-> Warning: This rule needs customization.
+:::caution
+
+This rule needs customization.
+
+:::
 
 A Sass mixin lets you make groups of CSS declarations that you want to reuse throughout your site. In this example, it creates a warning when the color pattern is used and suggests using a mixin instead.
 
@@ -81,7 +90,11 @@ rules:
 
 ## Rule: Disallow offensive words
 
-> Warning: This rule needs customization.
+:::caution
+
+This rule needs customization.
+
+:::
 
 The use of offensive words can cause you to lose the trust of your customer. The following rules check the use of them.
 
