@@ -13,6 +13,14 @@
   --ifm-navbar-link-hover-color: var(--ifm-font-color-base);
 }
 
+html[data-theme="dark"] .navbar--primary {
+  --ifm-navbar-link-hover-color: var(--ifm-font-color-base-inverse);
+}
+
+html[data-theme="dark"] .navbar__brand:hover {
+  color: var(--ifm-font-color-base-inverse);
+}
+
 /* Override Prism theme */
 .custom-yaml .language-yaml {
   --ifm-code-font-size: 110%;
