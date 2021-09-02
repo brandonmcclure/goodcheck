@@ -10,13 +10,13 @@ sidebar_label: Get Started
 gem install goodcheck
 ```
 
-Or you can use [`bundler`](https://bundler.io):
+Or you can use [Bundler](https://bundler.io):
 
 ```shell
 bundle add goodcheck
 ```
 
-If you would not like to install Goodcheck to system (e.g. you would not like to install Ruby), you can use our [Docker images](#docker-images).
+If you would not like to install Goodcheck to your system (e.g. you would not like to install Ruby), you can use our [Docker images](#docker-images).
 
 ## Docker images
 
