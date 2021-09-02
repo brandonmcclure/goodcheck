@@ -17,14 +17,14 @@ With Goodcheck the only thing you have to do is define the rules, pairing patter
 
 Goodcheck is provided as a Ruby gem. To install it, run:
 
-```console
-$ gem install goodcheck
+```shell
+gem install goodcheck
 ```
 
 If you do not want to install it, you can run it via Docker instead:
 
-```console
-$ docker run -t --rm -v "$(pwd):/work" sider/goodcheck
+```shell
+docker run -t --rm -v "$(pwd):/work" sider/goodcheck
 ```
 
 Check out the [documentation](docs/getstarted.md) or [website](https://sider.github.io/goodcheck/) for more details.
