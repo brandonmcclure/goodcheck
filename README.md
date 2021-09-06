@@ -35,6 +35,14 @@ After checking out the repository, run `bin/setup` to install dependencies. Then
 
 To install this gem onto your local machine, run `bundle exec rake install`.
 
+### Website
+
+To develop the website on your local machine, run:
+
+```shell
+npm start
+```
+
 ### Releasing
 
 To release a new version, follows the steps below:
