@@ -41,5 +41,5 @@ publish:
 
 clean:
 	echo 'Not implemented'
-test:
+test: build
 	docker run --entrypoint rake --workdir /goodcheck $(REGISTRY_NAME)$(REPOSITORY_NAME)$(IMAGE_NAME)$(TAG) test | out-file testresult.txt
