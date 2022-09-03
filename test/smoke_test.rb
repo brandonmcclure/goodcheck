@@ -13,7 +13,7 @@ class SmokeTest < Minitest::Test
     TestCaseBuilder.tmpdir do |builder|
       stdout, stderr, status = shell(goodcheck, chdir: builder.path)
 
-      refute status.success?
+      refute status.success?, "We expected the 'goodcheck version' shell command to return True. This can indicate an issue with the command line argument parsing"
       assert_match %r(#{Regexp.escape "Usage: goodcheck <command> [options] [args...]"}), stdout
       assert_empty stderr
     end
@@ -23,7 +23,7 @@ class SmokeTest < Minitest::Test
     TestCaseBuilder.tmpdir do |builder|
       stdout, stderr, status = shell(goodcheck, "foo", chdir: builder.path)
 
-      refute status.success?
+      refute status.success?, "We expected the 'goodcheck version' shell command to return True. This can indicate an issue with the command line argument parsing"
       assert_match %r(#{Regexp.escape "Usage: goodcheck <command> [options] [args...]"}), stdout
       assert_match %r(invalid command: foo), stderr
     end
@@ -33,7 +33,7 @@ class SmokeTest < Minitest::Test
     TestCaseBuilder.tmpdir do |builder|
       stdout, stderr, status = shell(goodcheck, "help", chdir: builder.path)
 
-      assert status.success?
+      assert status.success?, "We expected the 'goodcheck version' shell command to return True. This can indicate an issue with the command line argument parsing"
       assert_match %r(#{Regexp.escape "Usage: goodcheck <command> [options] [args...]"}), stdout
       assert_empty stderr
     end
@@ -43,7 +43,7 @@ class SmokeTest < Minitest::Test
     TestCaseBuilder.tmpdir do |builder|
       stdout, stderr, status = shell(goodcheck, "version", chdir: builder.path)
 
-      assert status.success?
+      assert status.success?, "We expected the 'goodcheck version' shell command to return True. This can indicate an issue with the command line argument parsing"
       assert_match %r(#{Regexp.escape "goodcheck #{Goodcheck::VERSION}"}), stdout
       assert_empty stderr
     end
@@ -51,18 +51,18 @@ class SmokeTest < Minitest::Test
 
   def test_version_flag
     TestCaseBuilder.tmpdir do |builder|
-      stdout, stderr, status = shell(goodcheck, "--version", chdir: builder.path)
+      stdout, stderr, status = shell(goodcheck, "version", chdir: builder.path)
 
-      assert status.success?
+      assert status.success?, "We expected the 'goodcheck version' shell command to return True. This can indicate an issue with the command line argument parsing"
       assert_match %r(#{Regexp.escape "goodcheck #{Goodcheck::VERSION}"}), stdout
-      assert_empty stderr
+      assert_empty stderr, %r("We Expected stderr to be empty but it is not: #{stderr}")
     end
   end
 
   def test_init
     TestCaseBuilder.tmpdir do |builder|
       stdout, stderr, status = shell(goodcheck, "init", chdir: builder.path)
-      assert status.success?
+      assert status.success?, "We expected the 'goodcheck init' shell command to return True. This can indicate an issue with the command line argument parsing"
       assert_equal <<OUT, stdout
 Wrote goodcheck.yml. ✍️
 OUT
@@ -74,7 +74,7 @@ OUT
   def test_init_with_config
     TestCaseBuilder.tmpdir do |builder|
       stdout, stderr, status = shell(goodcheck, "init", "--config=hello.yml", chdir: builder.path)
-      assert status.success?
+      assert status.success?, "We expected the 'goodcheck init --config=hello.yml' shell command to return True. This can indicate an issue with the command line argument parsing"
       assert_equal <<OUT, stdout
 Wrote hello.yml. ✍️
 OUT
@@ -88,7 +88,7 @@ OUT
       (builder.path + "hello.yml").write("hogehoge")
 
       stdout, stderr, status = shell(goodcheck, "init", "--config=hello.yml", "--force", chdir: builder.path)
-      assert status.success?
+      assert status.success?, "We expected the 'goodcheck init --config=hello.yml --force' shell command to return True. This can indicate an issue with the command line argument parsing"
       assert_equal <<OUT, stdout
 Wrote hello.yml. ✍️
 OUT
@@ -100,10 +100,10 @@ OUT
   def test_init_and_pass_test
     TestCaseBuilder.tmpdir do |builder|
       _, _, status = shell(goodcheck, "init", chdir: builder.path)
-      assert status.success?
+      assert status.success?, "We expected the 'goodcheck init' shell command to return True. This can indicate an issue with the command line argument parsing"
 
       _, _, status = shell(goodcheck, "test", chdir: builder.path)
-      assert status.success?
+      assert status.success?, "We expected the 'goodcheck test' shell command to return True. This can indicate an issue with the command line argument parsing"
     end
   end
 
@@ -122,7 +122,7 @@ EOF
 
       stdout, stderr, status = shell(goodcheck, "test", chdir: builder.path)
 
-      assert status.success?
+      assert status.success?, "We expected the 'goodcheck test' shell command to return True. This can indicate an issue with the command line argument parsing"
       assert_match %r(Validating rule ID uniqueness...), stdout
       assert_empty stderr
     end
@@ -154,7 +154,7 @@ EOF
 
       stdout, stderr, status = shell(goodcheck, "check", ".", chdir: builder.path)
 
-      refute status.success?
+      refute status.success?, "We expected the 'goodcheck check .' shell command to return True. This can indicate an issue with the command line argument parsing"
       assert_equal <<OUT, stdout
 app/models/user.rb:2:15: Foo  (foo)
   belongs_to :foo
@@ -191,7 +191,7 @@ EOF
 
       stdout, stderr, status = shell(goodcheck, "check", "--format=json", ".", chdir: builder.path)
 
-      refute status.success?
+      refute status.success?, "We expected the 'goodcheck check --format=json .' shell command to return True. This can indicate an issue with the command line argument parsing"
       assert_equal [{
                       rule_id: "foo",
                       path: "app/models/user.rb",
@@ -234,7 +234,7 @@ EOF
 
       stdout, stderr, status = shell(goodcheck, "check", chdir: builder.path)
 
-      refute status.success?
+      refute status.success?, "We expected the 'goodcheck check' shell command to return True. This can indicate an issue with the command line argument parsing"
       assert_equal <<OUT, stdout
 app/models/user.rb:2:15: Foo  (foo)
   belongs_to :foo
@@ -276,7 +276,7 @@ EOF
 
       stdout, stderr, status = shell(goodcheck, "check", "-R", "bar", chdir: builder.path)
 
-      refute status.success?
+      refute status.success?, "We expected the 'goodcheck check -R bar' shell command to return True. This can indicate an issue with the command line argument parsing"
       assert_equal <<OUT, stdout
 app/views/welcome/index.html.erb:1:9: Bar  (bar)
 <h1>Foo Bar Baz</h1>
@@ -292,7 +292,7 @@ OUT
     TestCaseBuilder.tmpdir do |builder|
       stdout, stderr, status = shell(goodcheck, "check", "--format", "foo", chdir: builder.path)
 
-      refute status.success?
+      refute status.success?, "We expected the 'goodcheck check --format foo' shell command to return True. This can indicate an issue with the command line argument parsing"
       assert_empty stdout
       assert_equal "invalid argument: --format foo\n", stderr
     end
@@ -302,7 +302,7 @@ OUT
     TestCaseBuilder.tmpdir do |builder|
       stdout, stderr, status = shell(goodcheck, "check", "--foo", chdir: builder.path)
 
-      refute status.success?
+      refute status.success?, "We expected the 'goodcheck check --foo' shell command to return True. This can indicate an issue with the command line argument parsing"
       assert_empty stdout
       assert_equal "invalid option: --foo\n", stderr
     end
@@ -312,7 +312,7 @@ OUT
     TestCaseBuilder.tmpdir do |builder|
       stdout, stderr, status = shell(goodcheck, "check", "--help", chdir: builder.path)
 
-      assert status.success?
+      assert status.success?, "We expected the 'goodcheck check --help' shell command to return True. This can indicate an issue with the command line argument parsing"
       assert_equal <<HELP, stdout
 Usage: goodcheck check [options] paths...
     -c, --config=CONFIG              Configuration file path [default: 'goodcheck.yml']
@@ -348,28 +348,28 @@ EOF
 
       stdout, stderr, status = shell(goodcheck, "pattern", chdir: builder.path)
 
-      assert status.success?
+      assert status.success?, "We expected the 'goodcheck pattern' shell command to return True. This can indicate an issue with the command line argument parsing"
       assert_match "sample.foo", stdout
       assert_match "sample.bar", stdout
       assert_empty stderr
 
       stdout, stderr, status = shell(goodcheck, "pattern", "sample.foo", chdir: builder.path)
 
-      assert status.success?
+      assert status.success?, "We expected the 'goodcheck pattern sample.foo' shell command to return True. This can indicate an issue with the command line argument parsing"
       assert_match "sample.foo", stdout
       refute_match "sample.bar", stdout
       assert_empty stderr
 
       stdout, stderr, status = shell(goodcheck, "pattern", "sample", chdir: builder.path)
 
-      assert status.success?
+      assert status.success?, "We expected the 'goodcheck pattern sample' shell command to return True. This can indicate an issue with the command line argument parsing"
       assert_match "sample.foo", stdout
       assert_match "sample.bar", stdout
       assert_empty stderr
 
       stdout, stderr, status = shell(goodcheck, "pattern", "foo", chdir: builder.path)
 
-      assert status.success?
+      assert status.success?, "We expected the 'goodcheck foo' shell command to return True. This can indicate an issue with the command line argument parsing"
       refute_match "sample.foo", stdout
       refute_match "sample.bar", stdout
       assert_empty stderr
